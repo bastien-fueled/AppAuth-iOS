@@ -318,7 +318,7 @@ additionalParameters:(nullable NSDictionary<NSString *, NSString *> *)additional
 	}
 
 	NSURL *url = [query URLByReplacingQueryInURL:_configuration.authorizationEndpoint];
-	NSLog(@">>>> QUERY: %@", url);
+	NSLog(@"AppAuth initializing authorization request with URL:\n%@", url);
 
 	return url;
 }

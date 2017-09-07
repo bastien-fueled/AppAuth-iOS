@@ -144,11 +144,8 @@ static NSString *const kQueryStringParamAdditionalDisallowedCharacters = @"=&+";
 	if (!gOIDURLQueryComponentForceIOS7Handling && [NSURLQueryItem class]) {
 		NSURLComponents *components = [[NSURLComponents alloc] init];
 		components.queryItems = [self queryItems];
-		NSString *encodedQuery = components.query; //.stringByRemovingPercentEncoding;// components.percentEncodedQuery;
-		// NSURLComponents.percentEncodedQuery creates a validly escaped URL query component, but
-		// doesn't encode the '+' leading to potential ambiguity with application/x-www-form-urlencoded
-		// encoding. Percent encodes '+' to avoid this ambiguity.
-		encodedQuery = [encodedQuery stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
+		NSString *encodedQuery = components.query;
+		encodedQuery = [encodedQuery stringByReplacingOccurrencesOfString:@" " withString:@"+"];
 		return encodedQuery;
 	}
 
